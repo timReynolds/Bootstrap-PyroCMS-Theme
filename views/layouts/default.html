@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+  <head>
+    {pyro:theme:partial name="metadata"}
+  </head>
+  <body>
+    
+    {pyro:theme:partial name="header"}
+
+    <div class="container">
+    
+      <div class="row">
+      
+        <!-- Content -->
+        <div class="span10">
+          {pyro:theme:partial name="breadcrumbs"}
+          {pyro:template:body}
+        </div>
+      
+        <!-- Sidebar -->
+        <div class="span6">
+          {pyro:theme:partial name="sidebar"}
+        </div>
+      
+      <!-- End Row -->
+      </div>
+      
+      <!-- Footer -->
+      <div class="row">
+    
+        <div class="span16">
+          {pyro:theme:partial name="footer"}
+        </div>
+        
+      <!-- End Row -->
+      </div>
+    
+    </div>
+    
+    {pyro:integration:analytics}
+    
+  </body>
+</html>

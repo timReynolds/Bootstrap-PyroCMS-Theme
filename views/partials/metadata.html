@@ -1,0 +1,35 @@
+<!-- Meta data -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{pyro:template:metadata}
+<title>{pyro:settings:site_name} &bull; {pyro:template:title}</title>
+
+
+<!-- Guess we better help IE out -->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+    
+<!-- CSS Stylesheets -->
+{pyro:theme:css file="bootstrap.min.css"}
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+  }
+</style>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
+
+{pyro:theme:js file="bootstrap-twipsy.js"}    
+{pyro:theme:js file="bootstrap-alerts.js"}
+{pyro:theme:js file="bootstrap-dropdown.js"}
+{pyro:theme:js file="bootstrap-modal.js"}
+{pyro:theme:js file="bootstrap-popover.js"}
+{pyro:theme:js file="bootstrap-scrollspy.js"}
+{pyro:theme:js file="bootstrap-tabs.js"}
+
+<script type="text/javascript">
+  $('#topbar').dropdown();
+  
+</script>
