@@ -1,39 +1,38 @@
 <div class="topbar">
   <div class="fill">
     <div class="container">
-      <a class="brand" href="{pyro:url:site}">{pyro:settings:site_name}</a>
+      <a class="brand" href="{{ url:site }}">{{ settings:site_name }}</a>
       <ul class="nav">
-        {pyro:navigation:links group="header"}
+        {{ navigation:links group="header" }}
       </ul>
-      {if '{pyro:user:logged_in}'}
+      {{ if user:logged_in }}
         <ul class="nav secondary-nav">
           <li class="dropdown" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle">{pyro:user:display_name}</a>
+            <a href="#" class="dropdown-toggle">{{ user:display_name }}</a>
             <ul class="dropdown-menu">
-              {if '{pyro:settings:enable_profiles}'}
-                <li><a href="{pyro:url:site uri='my-profile'}">{pyro:user:display_name}</a></li>
-      		  <li><a href="{pyro:url:site uri='edit-profile'}">{pyro:helper:lang line="edit_profile_label"}</a><li>
-		     {/if}
-		     <li><a href="{pyro:url:site uri='edit-settings'}">{pyro:helper:lang line="settings_label"}</a></li>
-  		    {if '{pyro:user:has_cp_permissions}'}
-          	  <li><a href="{pyro:url:site uri='admin'}" target="_blank">{pyro:helper:lang line="global:control-panel"}</a></li>
-      		{/if}
+              {{ if settings:enable_profiles }}
+                <li><a href="{{ url:site uri="my-profile" }}">{{ user:display_name }}</a></li>
+      		      <li><a href="{{ url:site uri="edit-profile" }}">{{ helper:lang line="edit_profile_label" }}</a><li>
+		          {{ endif }}
+  		        {{ if user:has_cp_permissions }}
+          	    <li><a href="{{ url:site uri="admin" }}" target="_blank">{{ helper:lang line="global:control-panel" }}</a></li>
+      		    {{ endif }}
               <li class="divider"></li>
-              <li><a href="{pyro:url:site uri='users/logout'}">{pyro:helper:lang line="logout_label"}</a></li>
+              <li><a href="{{ url:site uri="users/logout" }}">{{ helper:lang line="logout_label" }}</a></li>
             </ul>
           </li>
         </ul>
-      {else}
-        <form action="{pyro:url:site uri='users/login'}" method="post" class="pull-right">
-          <input type="hidden" name="redirect_to" value="{pyro:url:current}" />
-          <input class="input-small" type="email" id="email" name="email" maxlength="120" value="{pyro:helper:lang line='user_email'}" onblur="if (this.value == '') { this.value = '{pyro:helper:lang line="user_email"}'; }"  onfocus="if (this.value == '{pyro:helper:lang line="user_email"}') { this.value = ''; }">
+      {{ else }}
+        <form action="{{ url:site uri="users/login" }}" method="post" class="pull-right">
+          <input type="hidden" name="redirect_to" value="{{ url:current }}" />
+          <input class="input-small" type="email" id="email" name="email" maxlength="120" value="{{ helper:lang line="user_email" }}" onblur="if (this.value == "") {{  this.value = "{{ helper:lang line="user_email" }}";  }}"  onfocus="if (this.value == "{{ helper:lang line="user_email" }}") {{  this.value = "";  }}">
           
-          <input class="input-small" type="password" id="password" name="password" maxlength="20" value="{pyro:helper:lang line='user_password'}" onblur="if (this.value == '') { this.value = '{pyro:helper:lang line="user_password"}'; }"  onfocus="if (this.value == '{pyro:helper:lang line="user_password"}') { this.value = ''; }" >
+          <input class="input-small" type="password" id="password" name="password" maxlength="20" value="{{ helper:lang line="user_password" }}" onblur="if (this.value == "") {{  this.value = "{{ helper:lang line="user_password" }}";  }}"  onfocus="if (this.value == "{{ helper:lang line="user_password" }}") {{  this.value = "";  }}" >
           
-          <button class="btn" type="submit" name="btnLogin">{pyro:helper:lang line='user_login_btn'}</button>
-          <a href="{pyro:url:site}register" class="btn primary">{pyro:helper:lang line="user_register_btn"}</a>
+          <button class="btn" type="submit" name="btnLogin">{{ helper:lang line="user_login_btn" }}</button>
+          <a href="{{ url:site }}register" class="btn primary">{{ helper:lang line="user_register_btn" }}</a>
         </form>
-      {/if}
+      {{ endif }}
     </div>
   </div>
 </div>

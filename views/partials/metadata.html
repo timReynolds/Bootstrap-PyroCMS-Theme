@@ -1,7 +1,7 @@
 <!-- Meta data -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-{pyro:template:metadata}
-<title>{pyro:settings:site_name} &bull; {pyro:template:title}</title>
+{{ template:metadata }}
+<title>{{ settings:site_name }} &bull; {{ template:title }}</title>
 
 
 <!-- Guess we better help IE out -->
@@ -10,21 +10,21 @@
 <![endif]-->
     
 <!-- CSS Stylesheets -->
-{pyro:theme:css file="bootstrap.min.css"}
+{{ theme:css file="bootstrap.min.css" }}
 
 <style type="text/css">
-  body {
-    padding-top: 60px;
-  }
+      body {
+        padding-top: 60px;
+      }
 </style>
 
-{pyro:theme:js file="jquery-1.7.min.js"}
-{pyro:theme:js file="jquery.tablesorter.min.js"}
+{{ theme:js file="jquery-1.7.min.js" }}
+{{ theme:js file="jquery.tablesorter.min.js" }}
 
-{pyro:theme:js file="bootstrap-twipsy.js"}    
-{pyro:theme:js file="bootstrap-alerts.js"}
-{pyro:theme:js file="bootstrap-dropdown.js"}
-{pyro:theme:js file="bootstrap-modal.js"}
-{pyro:theme:js file="bootstrap-popover.js"}
-{pyro:theme:js file="bootstrap-scrollspy.js"}
-{pyro:theme:js file="bootstrap-tabs.js"}
+{{ theme:js file="bootstrap-twipsy.js" }}    
+{{ theme:js file="bootstrap-alerts.js" }}
+{{ theme:js file="bootstrap-dropdown.js" }}
+{{ theme:js file="bootstrap-modal.js" }}
+{{ theme:js file="bootstrap-popover.js" }}
+{{ theme:js file="bootstrap-scrollspy.js" }}
+{{ theme:js file="bootstrap-tabs.js" }}
