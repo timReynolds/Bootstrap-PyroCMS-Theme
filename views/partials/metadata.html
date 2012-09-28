@@ -12,7 +12,10 @@
 <!-- CSS Stylesheets -->
 {{ theme:css file="bootstrap.min.css" }}
 {{ theme:css file="bootstrapreponsive.min.css" }}
-{{ theme:css file="nav-fix.css" }}
+
+{{ if theme:options:include_nav_fix == 'yes' }}
+	{{ theme:css file="nav-fix.css" }}
+{{ endif }}
 
 <!--  JavaScript -->
 {{ theme:js file="jquery-1.8.min.js" }}

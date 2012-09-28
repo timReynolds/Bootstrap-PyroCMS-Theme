@@ -12,7 +12,7 @@ It is not designed as a production ready Theme for pyroCMS, if your interested i
 
 If you have any suggestions, feedback or would just like to say hi feel free to get in touch. 
 
-@tjr88
+@timjreynolds
 
 ## Feathers 
 
