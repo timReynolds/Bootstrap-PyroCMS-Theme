@@ -15,7 +15,7 @@ class Theme_Bootstrap extends Theme {
 							'default'       => 'yes',
 							'type'          => 'radio',
 							'options'       => 'yes=Yes|no=No',
-							'is_required'   => TRUE)
+							'is_required'   => TRUE
 						),
         'include_nav_fix' => array(
                             'title' => 'Include Navigation Fix',
@@ -23,9 +23,9 @@ class Theme_Bootstrap extends Theme {
                             'default'       => 'yes',
                             'type'          => 'radio',
                             'options'       => 'yes=Yes|no=No',
-                            'is_required'   => TRUE)
+                            'is_required'   => TRUE
                         ),
-    ;
+        );
 }
 
 /* End of file theme.php */
