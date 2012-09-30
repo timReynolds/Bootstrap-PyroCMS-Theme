@@ -1,7 +1,8 @@
 <h2 class="page-title" id="page_title"><?php echo lang('user_login_header') ?></h2>
 
 <?php if (validation_errors()): ?>
-<div class="alert-message error">
+<div class="alert alert-error">
+	<button type="button" class="close" data-dismiss="alert">×</button>
 	<?php echo validation_errors();?>
 </div>
 <?php endif; ?>
@@ -16,9 +17,9 @@
   
 		<p><?php echo form_checkbox('remember', '1', FALSE); ?><?php echo lang('user_remember')?></p>
      	
-     	<div class='actions'>
-		<input type="submit" value="<?php echo lang('user_login_btn') ?>" name="btnLogin" class="btn"/>
-		<?php echo anchor('register', lang('user_register_btn'), 'class="btn primary"');?>
+     	<div class='form-actions'>
+		<input type="submit" value="<?php echo lang('user_login_btn') ?>" name="btnLogin" class="btn btn-primary"/>
+		<?php echo anchor('register', lang('user_register_btn'), 'class="btn btn-success"');?>
 		</div>
 		<p><?php echo anchor('users/reset_pass', lang('user_reset_password_link'));?></p>
 
