@@ -25,6 +25,12 @@ class Theme_Bootstrap extends Theme {
                             'options'       => 'yes=Yes|no=No',
                             'is_required'   => TRUE
                         ),
+        'navigation_layout' =>  array('title' => 'Navigation layout',
+                                'description'   => 'How would you like the navigation displayed?',
+                                'default'       => 'bar',
+                                'type'          => 'select',
+                                'options'       => 'bar=Bar|navbar-fixed-top=Fixed to top|navbar-fixed-bottom=Fixed to bottom',
+                                'is_required'   => TRUE),
         );
 }
 

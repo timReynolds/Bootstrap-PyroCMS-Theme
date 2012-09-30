@@ -17,7 +17,7 @@ If you have any suggestions, feedback or would just like to say hi feel free to 
 ## Feathers 
 
 - Fixed 2 column 960 grid style layout 
-- Fixed top bar navigation, supporting login and drop down account option sub nab
+- Option driven navigation including account dropdown
 - PyroCMS widget sidebar
 - Updated Contact form, User login, User registration, User password reset and user edit using bootstrap stacked form and alerts
 - Includes JQuery and full bootstrap JS library
