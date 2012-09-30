@@ -1,24 +1,24 @@
 <!DOCTYPE html>
   <head>
-    {pyro:theme:partial name="metadata"}
+    {{ theme:partial name="metadata"}}
   </head>
   <body>
     
-    {pyro:theme:partial name="header"}
-
     <div class="container">
+
+      {{ theme:partial name="navbar" }}
     
       <div class="row">
       
         <!-- Content -->
-        <div class="span10">
-          {pyro:theme:partial name="breadcrumbs"}
-          {pyro:template:body}
+        <div class="span8">
+          {{ theme:partial name="breadcrumbs" }}
+          {{ template:body }}
         </div>
       
         <!-- Sidebar -->
-        <div class="span6">
-          {pyro:theme:partial name="sidebar"}
+        <div class="span4">
+          {{ theme:partial name="sidebar" }}
         </div>
       
       <!-- End Row -->
@@ -27,8 +27,8 @@
       <!-- Footer -->
       <div class="row">
     
-        <div class="span16">
-          {pyro:theme:partial name="footer"}
+        <div class="span12">
+          {{ theme:partial name="footer" }}
         </div>
         
       <!-- End Row -->
@@ -36,7 +36,7 @@
     
     </div>
     
-    {pyro:integration:analytics}
+    {{ integration:analytics }}
     
   </body>
 </html>

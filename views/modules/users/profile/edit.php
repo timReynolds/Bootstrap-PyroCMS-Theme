@@ -1,120 +1,83 @@
-<h2 id="page_title" class="page-title"><?php echo lang('profile_edit') ?></h2>
+<h2 id="page_title" class="page-title">
+	<?php echo ($this->current_user->id !== $_user->id) ?
+					sprintf(lang('user_edit_title'), $_user->display_name) :
+					lang('profile_edit') ?>
+</h2>
 <div>
-	<?php if(validation_errors()):?>
-	<div class="error-box">
+	<?php if (validation_errors()):?>
+	<div class="alert alert-error">
 		<?php echo validation_errors();?>
 	</div>
 	<?php endif;?>
 
-	<?php echo form_open('edit-settings', array('id'=>'user_edit', 'class'=>'form-stacked'));?>
+	<?php echo form_open_multipart('', array('id'=>'user_edit'));?>
+
+	<fieldset id="profile_fields">
+		<legend><?php echo lang('user_details_section') ?></legend>
+			<label for="display_name"><?php echo lang('profile_display_name'); ?></label>
+			<?php echo form_input(array('name' => 'display_name', 'id' => 'display_name', 'value' => set_value('display_name', $display_name))); ?>
+
+			<?php foreach($profile_fields as $field): ?>
+				<?php if($field['input']): ?>
+					<label for="<?php echo $field['field_slug']; ?>">
+						<?php echo (lang($field['field_name'])) ? lang($field['field_name']) : $field['field_name'];  ?>
+						<?php if ($field['required']) echo '<span>*</span>'; ?>
+					</label>
+
+					<?php if($field['instructions']) echo '<p class="instructions">'.$field['instructions'].'</p>'; ?>
+					<?php echo $field['input']; ?>
+
+				<?php endif; ?>
+			<?php endforeach; ?>
+	</fieldset>
 
 	<fieldset id="user_names">
-		<legend><?php echo lang('user_details_section') ?></legend>
-
-      		<label for="first_name"><?php echo lang('user_first_name') ?></label>
-			<?php echo form_input('first_name', $user->first_name); ?>
-
-			<label for="last_name"><?php echo lang('user_last_name') ?></label>
-			<?php echo form_input('last_name', $user->last_name); ?>
-
-			<label for="display_name"><?php echo lang('profile_display_name') ?></label>
-			<?php echo form_input('display_name', set_value('display_name', $user->display_name)); ?>
-
+		<legend><?php echo lang('user_email_label') ?></legend>
+			<label for="email"><?php echo lang('user_email_label') ?></label>
+				<?php echo form_input('email', $_user->email); ?>
 	</fieldset>
 
 	<fieldset id="user_password">
 		<legend><?php echo lang('user_password_section') ?></legend>
-
-				<label for="password"><?php echo lang('user_password') ?></label>
-				<?php echo form_password('password', '', 'autocomplete="off"'); ?>
-
+			<label for="password"><?php echo lang('user_password') ?></label><br/>
+			<?php echo form_password('password', '', 'autocomplete="off"'); ?>
 	</fieldset>
 
+	<?php if (Settings::get('api_enabled') and Settings::get('api_user_keys')): ?>
+		
+	<script>
+	jQuery(function($) {
+		
+		$('input#generate_api_key').click(function(){
+			
+			var url = "<?php echo site_url('api/ajax/generate_key') ?>",
+				$button = $(this);
+			
+			$.post(url, function(data) {
+				$button.prop('disabled', true);
+				$('span#api_key').text(data.api_key).parent('li').show();
+			}, 'json');
+			
+		});
+		
+	});
+	</script>
+		
 	<fieldset>
-		<legend><?php echo lang('user_other_settings_section') ?></legend>
-
-				<label for="lang"><?php echo lang('user_lang') ?></label><br/>
-				<?php echo form_dropdown('lang', $languages, $user->lang); ?>
-
-	</fieldset>
-	
-	<fieldset id="user_personal">
-		<legend><?php echo lang('profile_personal_section') ?></legend>
-    
-                  <div class="clearfix">
-
-				<label><?php echo lang('profile_dob') ?></label>
-				<div class="input">
-      				<div class="inline-inputs">
-						<?php echo form_dropdown('dob_day', $days, isset($user->dob_day) ? $user->dob_day : 1, "class='small'") ?>
-						<?php echo form_dropdown('dob_month', $months, isset($user->dob_month) ? $user->dob_month : 1, "class='medium'") ?>
-						<?php echo form_dropdown('dob_year', $years, isset($user->dob_year) ? $user->dob_year : null, "class='medium'") ?>
-                        </div>
-				</div>
-                  </div>
-				<label for="gender"><?php echo lang('profile_gender') ?></label>
-				<?php echo form_dropdown('gender', array(''=> lang('profile_gender_nt'), 'm'=>lang('profile_gender_male'), 'f'=>lang('profile_gender_female')), $user->gender); ?>
-
-				<label for="bio"><?php echo lang('profile_bio') ?></label>
-				<?php echo form_textarea(array('name'=>'bio', 'value'=>$user->bio, 'cols'=>60, 'rows'=>8, 'class'=>'xxlarge') ); ?>
-	</fieldset>
-
-	<fieldset id="user_contact">
-		<legend><?php echo lang('profile_contact_section') ?></legend>
-
-				<label for="phone"><?php echo lang('profile_phone') ?></label>
-				<?php echo form_input('phone', $user->phone); ?>
-
-				<label for="mobile"><?php echo lang('profile_mobile') ?></label>
-				<?php echo form_input('mobile', $user->mobile); ?>
-
-				<label for="address_line1"><?php echo lang('profile_address_line1') ?></label>
-				<?php echo form_input('address_line1', $user->address_line1); ?>
-
-				<label for="address_line2"><?php echo lang('profile_address_line2') ?></label>
-				<?php echo form_input('address_line2', $user->address_line2); ?>
-
-				<label for="address_line3"><?php echo lang('profile_address_line3') ?></label>
-				<?php echo form_input('address_line3', $user->address_line3); ?>
-
-				<label for="postcode"><?php echo lang('profile_address_postcode') ?></label>
-				<?php echo form_input('postcode', $user->postcode); ?>
-
-				<label for="website"><?php echo lang('profile_website'); ?></label>
-				<?php echo form_input('website', $user->website); ?>
-	</fieldset>
-
-	<fieldset id="user_social">
-		<legend><?php echo lang('profile_messenger_section') ?></legend>
-
-				<label for="msn_handle"><?php echo lang('profile_msn_handle') ?></label>
-				<?php echo form_input('msn_handle', $user->msn_handle); ?>
-
-				<label for="aim_handle"><?php echo lang('profile_aim_handle') ?></label>
-				<?php echo form_input('aim_handle', $user->aim_handle); ?>
-
-				<label for="yim_handle"><?php echo lang('profile_yim_handle') ?></label>
-				<?php echo form_input('yim_handle', $user->yim_handle); ?>
-
-				<label for="gtalk_handle"><?php echo lang('profile_gtalk_handle') ?></label>
-				<?php echo form_input('gtalk_handle', $user->gtalk_handle); ?>
-	</fieldset>
-
-	<fieldset>
-		<legend><?php echo lang('profile_social_section') ?></legend>
-
-				<label for="mobile"><?php echo lang('profile_gravatar') ?></label>
-				<?php echo form_input('gravatar', $user->gravatar); ?>
-
-		<!--
+		<legend><?php echo lang('profile_api_section') ?></legend>
+		
+		<ul>
+			<li <?php $api_key or print('style="display:none"') ?>><?php echo sprintf(lang('api:key_message'), '<span id="api_key">'.$api_key.'</span>'); ?></li>
 			<li>
-				<label for="twitter"><?php echo lang('profile_twitter') ?></label></dt>
-				<?php echo (!$this->current_user->twitter_access_token) ? anchor('users/profile/twitter', 'Connect with Twitter') : 'Twitter Connected'; ?>
+				<input type="button" id="generate_api_key" value="<?php echo lang('api:generate_key') ?>" />
 			</li>
-		-->
+		</ul>
+	
 	</fieldset>
-	<div class="actions">
-     	<?php echo form_submit(array('class'=>"btn primary"), lang('profile_save_btn')); ?>
-     	<?php echo form_close(); ?>
+	<?php endif; ?>
+
+    <div class='form-actions'>
+    	<input type="submit" value="<?php echo lang('profile_save_btn') ?>" class="btn btn-primary"/>
+	    <?php echo form_close(); ?>
 	</div>
 </div>
