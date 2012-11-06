@@ -7,7 +7,7 @@ class Theme_Bootstrap extends Theme {
     public $author_website = 'http://www.timothyreynolds.co.uk/';
     public $website = 'http://www.pyrocms.com/';
     public $description = 'Bootstrap template.';
-    public $version = '2.0b';
+    public $version = '2.0';
     public $options = array(
         'show_breadcrumbs' => array(
                      	    'title' => 'Show Breadcrumbs',

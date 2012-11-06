@@ -1,7 +1,7 @@
 # Bootstrap PyroCMS Theme
 
 * [Website](http://timothyreynolds.co.uk)
-* Version: 2.0b
+* Version: 2.0
 * PyroCMS Version: 2.x
 
 ## Description
