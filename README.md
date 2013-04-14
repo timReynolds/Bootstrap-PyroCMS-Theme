@@ -14,8 +14,7 @@ If you have any suggestions, feedback or would just like to say hi feel free to 
 
 @timjreynolds
 
-## Feathers 
-
+## Features
 - Fixed 2 column 960 grid style layout 
 - Option driven navigation including account dropdown
 - PyroCMS widget sidebar
